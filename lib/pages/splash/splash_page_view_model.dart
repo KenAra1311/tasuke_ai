@@ -11,7 +11,7 @@ class SplashPageModelView {
   /*
    * スプラッシュ画面で1秒経過したら画面を遷移する
    */
-  void setTimer(BuildContext context) {
-    _splashService.setTimer(context);
+  void setTimer({@required BuildContext context}) {
+    _splashService.setTimer(context: context);
   }
 }
