@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:tasuke_ai/pages/welcome/welcome_page.dart';
 import 'package:tasuke_ai/pages/splash/splash_page.dart';
 
 void main() {
   runApp(
     MaterialApp(
-      initialRoute: '/splash',
+      initialRoute: '/',
       routes: <String, WidgetBuilder>{
-        '/': (BuildContext context) => MyApp(),
-        '/splash': (BuildContext context) => SplashPage(),
+        '/': (BuildContext context) => SplashPage(),
+        '/welcome': (BuildContext context) => WelcomePage(),
+        '/home': (BuildContext context) => MyApp(),
       },
     ),
   );
