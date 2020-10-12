@@ -29,12 +29,12 @@ class WelcomePage extends StatelessWidget {
             margin: EdgeInsets.only(bottom: 30),
             width: double.infinity,
             height: 80,
-            child: RaisedButton(
-              onPressed: () => Navigator.of(context).pushNamed('/'),
+            child: FlatButton(
+              onPressed: () => Navigator.of(context).pushNamed('/sign-up/01'),
               color: Colors.redAccent,
               textColor: Colors.white,
               child: Text(
-                'ユーザーを登録する',
+                '新規登録する',
                 style: TextStyle(fontSize: 18),
               ),
             ),
@@ -42,7 +42,7 @@ class WelcomePage extends StatelessWidget {
           Container(
             width: double.infinity,
             height: 80,
-            child: RaisedButton(
+            child: FlatButton(
               onPressed: () => Navigator.of(context).pushNamed('/'),
               color: Colors.indigoAccent,
               textColor: Colors.white,
