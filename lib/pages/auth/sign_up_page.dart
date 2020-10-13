@@ -52,17 +52,15 @@ class _Body extends StatelessWidget {
             decoration: InputDecoration(labelText: 'パスワード'),
             obscureText: true,
           ),
-          TextFormField(
-            controller: _signUpPageModelView.passwordConfirmTextController,
-            decoration: InputDecoration(labelText: 'パスワード（確認用）'),
-            obscureText: true,
+          Container(
+            child: Text(_signUpPageModelView.info),
           ),
           Container(
             margin: EdgeInsets.only(top: 30),
             width: double.infinity,
             height: 40,
             child: RaisedButton(
-              onPressed: () => Navigator.of(context).pushNamed('/home'),
+              onPressed: () => _signUpPageModelView.signUpUser(context),
               color: Colors.red,
               textColor: Colors.white,
               child: Text('次に進む'),
