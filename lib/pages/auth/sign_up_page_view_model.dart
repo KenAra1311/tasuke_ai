@@ -23,9 +23,9 @@ class SignUpPageModelView extends ChangeNotifier {
   /*
    * ユーザを登録して、成功ならば画面遷移、失敗ならばリダイレクト
    */
-  Future signUpUser(context) async {
+  Future<dynamic> signUpUser(context) async {
     await _signUpService.signUpUser(
-      mail: emailTextController.text,
+      email: emailTextController.text,
       password: passwordTextController.text,
       info: info,
       context: context

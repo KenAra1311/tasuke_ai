@@ -9,15 +9,22 @@ class SignUpService {
    * ユーザを登録して、成功ならば画面遷移、失敗ならばリダイレクト
    */
   Future<dynamic> signUpUser({
-    @required String mail,
+    @required String email,
     @required String password,
     @required String info,
     @required BuildContext context
   }) async {
+    final String errorStatement = checkValidation(email: email, password: password);
+    if (errorStatement != '') {
+      info = errorStatement;
+
+      return;
+    }
+
     try {
       await Firebase.initializeApp();
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: mail,
+        email: email,
         password: password
       );
 
@@ -31,7 +38,27 @@ class SignUpService {
     } catch (e) {
       info = e.toString();
     }
+  }
 
-    print(info);
+  /*
+   * 入力された項目のバリデーションチェック
+   */
+  String checkValidation({
+    @required String email,
+    @required String password
+  }) {
+    String errorStatement = '';
+
+    if (email == '') {
+      errorStatement += 'メールアドレスが入力されておりません\n';
+    }
+    if (!email.contains('@')) {
+      errorStatement += 'メールアドレスが形式が正しくありません\n';
+    }
+    if (password == '') {
+      errorStatement += 'パスワードが入力されておりません\n';
+    }
+
+    return errorStatement;
   }
 }
