@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tasuke_ai/pages/auth/sign_up_01_page.dart';
+import 'package:tasuke_ai/pages/auth/sign_up_page.dart';
 import 'package:tasuke_ai/pages/splash/splash_page.dart';
 import 'package:tasuke_ai/pages/welcome/welcome_page.dart';
 import 'package:tasuke_ai/widgets/organisms/header.dart';
@@ -11,7 +11,7 @@ void main() {
       routes: <String, WidgetBuilder>{
         '/': (BuildContext context) => SplashPage(),
         '/welcome': (BuildContext context) => WelcomePage(),
-        '/sign-up/01': (BuildContext context) => SignUp01Page(),
+        '/sign-up': (BuildContext context) => SignUpPage(),
         '/home': (BuildContext context) => MyApp(),
       },
     ),

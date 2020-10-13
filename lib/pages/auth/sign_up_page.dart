@@ -4,7 +4,7 @@ import 'package:tasuke_ai/widgets/organisms/header.dart';
 
 import 'sign_up_page_view_model.dart';
 
-class SignUp01Page extends StatelessWidget {
+class SignUpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -36,7 +36,7 @@ class _Body extends StatelessWidget {
           Container(
             alignment: Alignment.topCenter,
             child: Text(
-              'アカウント情報を入力してください',
+              '登録するアカウント情報を入力してください',
               style: TextStyle(
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
