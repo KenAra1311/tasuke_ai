@@ -8,57 +8,61 @@ class SignUpService {
   /*
    * ユーザを登録して、成功ならば画面遷移、失敗ならばリダイレクト
    */
-  Future<dynamic> signUpUser({
+  Future signUpUser({
+    @required String name,
     @required String email,
     @required String password,
-    @required String info,
+    @required bool emailValidate,
+    @required bool passwordValidate,
     @required BuildContext context
   }) async {
-    final String errorStatement = checkValidation(email: email, password: password);
-    if (errorStatement != '') {
-      info = errorStatement;
-
-      return;
-    }
-
     try {
       await Firebase.initializeApp();
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: email,
-        password: password
-      );
+      final user = (await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password)).user;
 
-      Navigator.of(context).pushNamed('/home');
+      if (user != null) {
+        Navigator.of(context).pushNamed('/home');
+      }
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'weak-password') {
-        info = '入力していただいたパスワードが脆弱のようです。';
-      } else if (e.code == 'email-already-in-use') {
-        info = '入力していただいたメールアドレスはすでに存在しております。';
+      switch (e.code) {
+        case 'missing-email':
+        case 'invalid-email':
+        case 'email-already-in-use':
+          emailValidate = true;
+          break;
+        case 'weak-password':
+          passwordValidate = true;
+          break;
       }
     } catch (e) {
-      info = e.toString();
+      print(e.toString());
     }
   }
 
   /*
-   * 入力された項目のバリデーションチェック
+   * アカウント名のバリデーション
    */
-  String checkValidation({
-    @required String email,
-    @required String password
-  }) {
-    String errorStatement = '';
+  bool nameValidator({@required String name}) {
+    return name.isEmpty ? true : false;
+  }
 
-    if (email == '') {
-      errorStatement += 'メールアドレスが入力されておりません\n';
+  /*
+   * メールアドレスのバリデーション
+   */
+  bool emailValidator({@required String email}) {
+    if (email.isEmpty || !email.contains('@')) {
+      return true;
     }
-    if (!email.contains('@')) {
-      errorStatement += 'メールアドレスが形式が正しくありません\n';
-    }
-    if (password == '') {
-      errorStatement += 'パスワードが入力されておりません\n';
-    }
+    return false;
+  }
 
-    return errorStatement;
+  /*
+   * パスワードのバリデーション
+   */
+  bool passwordValidator({@required String password}) {
+    if (password.isEmpty || password.length < 6) {
+      return true;
+    }
+    return false;
   }
 }

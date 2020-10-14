@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:tasuke_ai/widgets/organisms/header.dart';
 
@@ -44,16 +45,27 @@ class _Body extends StatelessWidget {
             ),
           ),
           TextFormField(
+            controller: _signUpPageModelView.nameTextController,
+            decoration: InputDecoration(
+              labelText: 'アカウント名',
+              errorText: _signUpPageModelView.nameValidate ? 'アカウント名を入力してください' : null
+            ),
+          ),
+          TextFormField(
             controller: _signUpPageModelView.emailTextController,
-            decoration: InputDecoration(labelText: 'メールアドレス'),
+            decoration: InputDecoration(
+              labelText: 'メールアドレス',
+              errorText: _signUpPageModelView.emailValidate ? 'メールアドレスを正しい形式で入力してください' : null
+            ),
+            keyboardType: TextInputType.emailAddress,
           ),
           TextFormField(
             controller: _signUpPageModelView.passwordTextController,
-            decoration: InputDecoration(labelText: 'パスワード'),
+            decoration: InputDecoration(
+              labelText: 'パスワード',
+              errorText: _signUpPageModelView.passwordValidate ? 'パスワードは6文字以上で入力してください' : null
+            ),
             obscureText: true,
-          ),
-          Container(
-            child: Text(_signUpPageModelView.info),
           ),
           Container(
             margin: EdgeInsets.only(top: 30),
