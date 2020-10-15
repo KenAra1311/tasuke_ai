@@ -8,7 +8,7 @@ class SplashService {
    */
   void setTimer({@required BuildContext context}) {
     Timer(const Duration(seconds: 1), () {
-      Navigator.of(context).pushReplacementNamed('/');
+      Navigator.of(context).pushReplacementNamed('/welcome');
     });
   }
 }

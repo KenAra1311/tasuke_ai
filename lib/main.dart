@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:tasuke_ai/pages/auth/sign_up_page.dart';
 import 'package:tasuke_ai/pages/splash/splash_page.dart';
+import 'package:tasuke_ai/pages/welcome/welcome_page.dart';
+import 'package:tasuke_ai/widgets/organisms/header.dart';
 
 void main() {
   runApp(
     MaterialApp(
-      initialRoute: '/splash',
+      initialRoute: '/',
       routes: <String, WidgetBuilder>{
-        '/': (BuildContext context) => MyApp(),
-        '/splash': (BuildContext context) => SplashPage(),
+        '/': (BuildContext context) => SplashPage(),
+        '/welcome': (BuildContext context) => WelcomePage(),
+        '/sign-up': (BuildContext context) => SignUpPage(),
+        '/home': (BuildContext context) => MyApp(),
       },
     ),
   );
@@ -21,15 +26,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
-      home: MyHomePage(title: '助け愛'),
+      home: MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  final String title;
+  MyHomePage({Key key}) : super(key: key);
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -41,9 +44,10 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-        elevation: 0.0,
+      appBar: Header(
+        title: '助け愛',
+        backgroundColor: Color(0xfff44436),
+        iconThemeColor: Color(0xffffffff),
       ),
       body: Center(
         child: Column(
