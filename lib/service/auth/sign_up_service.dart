@@ -3,6 +3,9 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:tasuke_ai/factory/user_factory.dart';
+import 'package:tasuke_ai/model/user/user.dart' as UserModel;
+import 'package:tasuke_ai/repositories/firebase/firebase_user_repository.dart';
 
 class SignUpService {
   /*
@@ -18,9 +21,16 @@ class SignUpService {
   }) async {
     try {
       await Firebase.initializeApp();
-      final user = (await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password)).user;
+      final User user = (await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password)).user;
 
       if (user != null) {
+        final UserModel.User userModel = UserFactory(
+          uid: user.uid,
+          name: name,
+          email: email
+        ).make();
+        FirebaseUserRepository().store(user: userModel);
+
         Navigator.of(context).pushNamed('/home');
       }
     } on FirebaseAuthException catch (e) {

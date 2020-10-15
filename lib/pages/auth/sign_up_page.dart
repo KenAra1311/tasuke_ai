@@ -75,7 +75,7 @@ class _Body extends StatelessWidget {
               onPressed: () => _signUpPageModelView.signUpUser(context),
               color: Colors.red,
               textColor: Colors.white,
-              child: Text('次に進む'),
+              child: Text('アカウントを登録する'),
             ),
           ),
         ],
