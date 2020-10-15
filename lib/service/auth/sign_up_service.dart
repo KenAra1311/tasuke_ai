@@ -27,11 +27,12 @@ class SignUpService {
         final UserModel.User userModel = UserFactory(
           uid: user.uid,
           name: name,
-          email: email
+          email: email,
+          password: password
         ).make();
-        FirebaseUserRepository().store(user: userModel);
 
-        Navigator.of(context).pushNamed('/home');
+        FirebaseUserRepository().store(user: userModel)
+          .then((value) => Navigator.of(context).pushNamed('/home'));
       }
     } on FirebaseAuthException catch (e) {
       switch (e.code) {
@@ -45,7 +46,7 @@ class SignUpService {
           break;
       }
     } catch (e) {
-      print(e.toString());
+      print('error: ' + e.toString());
     }
   }
 
