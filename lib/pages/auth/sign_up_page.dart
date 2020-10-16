@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:tasuke_ai/widgets/organisms/header.dart';
+import 'package:tasuke_ai/widgets/organisms/show_info.dart';
 
 import 'sign_up_page_view_model.dart';
 
@@ -43,6 +44,9 @@ class _Body extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
+          ),
+          Container(
+            child: ShowInfo(info: _signUpPageModelView.info),
           ),
           TextFormField(
             controller: _signUpPageModelView.nameTextController,

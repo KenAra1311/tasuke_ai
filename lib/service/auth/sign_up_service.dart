@@ -15,8 +15,6 @@ class SignUpService {
     @required String name,
     @required String email,
     @required String password,
-    @required bool emailValidate,
-    @required bool passwordValidate,
     @required BuildContext context
   }) async {
     try {
@@ -33,20 +31,20 @@ class SignUpService {
 
         FirebaseUserRepository().store(user: userModel)
           .then((value) => Navigator.of(context).pushNamed('/home'));
+
+        return '';
       }
     } on FirebaseAuthException catch (e) {
+      print(e);
+
       switch (e.code) {
-        case 'missing-email':
-        case 'invalid-email':
         case 'email-already-in-use':
-          emailValidate = true;
-          break;
-        case 'weak-password':
-          passwordValidate = true;
-          break;
+          return '入力いただいたメールアドレスは、既に別のアカウントで使用されています';
       }
+
+      return e.code.toString();
     } catch (e) {
-      print('error: ' + e.toString());
+      return e.toString();
     }
   }
 }

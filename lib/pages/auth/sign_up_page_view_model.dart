@@ -11,6 +11,7 @@ class SignUpPageModelView extends ChangeNotifier {
   bool _nameValidate;
   bool _emailValidate;
   bool _passwordValidate;
+  String _info;
 
   SignUpPageModelView() {
     _signUpService = SignUpService();
@@ -21,6 +22,7 @@ class SignUpPageModelView extends ChangeNotifier {
     _nameValidate = false;
     _emailValidate = false;
     _passwordValidate = false;
+    _info = '';
   }
 
   TextEditingController get nameTextController => _nameTextController;
@@ -29,6 +31,7 @@ class SignUpPageModelView extends ChangeNotifier {
   bool get nameValidate => _nameValidate;
   bool get emailValidate => _emailValidate;
   bool get passwordValidate => _passwordValidate;
+  String get info => _info;
 
   /*
    * サインアップを実行し、成功ならば画面遷移
@@ -43,13 +46,15 @@ class SignUpPageModelView extends ChangeNotifier {
       return;
     }
 
-    await _signUpService.signUpUser(
+    _info = await _signUpService.signUpUser(
       name: nameTextController.text,
       email: emailTextController.text,
       password: passwordTextController.text,
-      emailValidate: _emailValidate,
-      passwordValidate: _passwordValidate,
       context: context
     );
+
+    if (info != '') {
+      notifyListeners();
+    }
   }
 }
