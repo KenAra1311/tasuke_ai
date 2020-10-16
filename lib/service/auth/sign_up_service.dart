@@ -30,7 +30,7 @@ class SignUpService {
         ).make();
 
         FirebaseUserRepository().store(user: userModel)
-          .then((value) => Navigator.of(context).pushReplacementNamed('/home'));
+          .then((_) => Navigator.of(context).pushReplacementNamed('/home'));
 
         return '';
       }
