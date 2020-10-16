@@ -35,8 +35,6 @@ class SignUpService {
         return '';
       }
     } on FirebaseAuthException catch (e) {
-      print(e);
-
       switch (e.code) {
         case 'email-already-in-use':
           return '入力いただいたメールアドレスは、既に別のアカウントで使用されています';

@@ -23,8 +23,6 @@ class SignInService {
 
       return '';
     } on FirebaseAuthException catch (e) {
-      print(e.code);
-
       switch (e.code) {
         case 'user-not-found':
           return '入力いただいたメールアドレスが見つかりませんでした';
