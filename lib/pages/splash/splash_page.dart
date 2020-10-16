@@ -7,10 +7,13 @@ class SplashPage extends StatelessWidget {
   Widget build(BuildContext context) {
     SplashPageModelView().setTimer(context: context);
 
-    return _body(context);
+    return _Body();
   }
+}
 
-  Widget _body(BuildContext context) {
+class _Body extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
     return Container(
       color: Color(0xfff44436),
       child: Row(

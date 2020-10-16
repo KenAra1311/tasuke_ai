@@ -4,11 +4,14 @@ class WelcomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _body(context)
+      body: _Body()
     );
   }
+}
 
-  Widget _body(BuildContext context) {
+class _Body extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(left: 20, right: 20),
       child: Column(
