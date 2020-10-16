@@ -9,6 +9,7 @@ class SignInPageModelView extends ChangeNotifier {
   TextEditingController _passwordTextController;
   bool _emailValidate;
   bool _passwordValidate;
+  bool _visible;
   String _info;
 
   SignInPageModelView() {
@@ -18,6 +19,7 @@ class SignInPageModelView extends ChangeNotifier {
     _passwordTextController = TextEditingController();
     _emailValidate = false;
     _passwordValidate = false;
+    _visible = false;
     _info = '';
   }
 
@@ -25,6 +27,7 @@ class SignInPageModelView extends ChangeNotifier {
   TextEditingController get passwordTextController => _passwordTextController;
   bool get emailValidate => _emailValidate;
   bool get passwordValidate => _passwordValidate;
+  bool get visible => _visible;
   String get info => _info;
 
   /*
@@ -39,6 +42,9 @@ class SignInPageModelView extends ChangeNotifier {
       return;
     }
 
+    _visible = true;
+    notifyListeners();
+
     _info = await _signInService.signInUser(
       email: emailTextController.text,
       password: passwordTextController.text,
@@ -46,6 +52,7 @@ class SignInPageModelView extends ChangeNotifier {
     );
 
     if (info != '') {
+      _visible = false;
       notifyListeners();
     }
   }
