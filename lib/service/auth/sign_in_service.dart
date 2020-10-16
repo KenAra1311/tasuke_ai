@@ -18,7 +18,7 @@ class SignInService {
       final user = (await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password)).user;
 
       if (user != null) {
-        Navigator.of(context).pushNamed('/home');
+        Navigator.of(context).pushReplacementNamed('/home');
       }
 
       return '';
