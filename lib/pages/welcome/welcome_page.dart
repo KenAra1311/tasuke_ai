@@ -43,7 +43,7 @@ class WelcomePage extends StatelessWidget {
             width: double.infinity,
             height: 80,
             child: FlatButton(
-              onPressed: () => Navigator.of(context).pushNamed('/'),
+              onPressed: () => Navigator.of(context).pushNamed('/sign-in'),
               color: Colors.indigoAccent,
               textColor: Colors.white,
               child: Text(

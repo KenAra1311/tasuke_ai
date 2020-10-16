@@ -9,7 +9,7 @@ import 'package:tasuke_ai/repositories/firebase/firebase_user_repository.dart';
 
 class SignUpService {
   /*
-   * ユーザを登録して、成功ならば画面遷移、失敗ならばリダイレクト
+   * サインアップを実行し、成功ならば画面遷移
    */
   Future signUpUser({
     @required String name,
@@ -48,32 +48,5 @@ class SignUpService {
     } catch (e) {
       print('error: ' + e.toString());
     }
-  }
-
-  /*
-   * アカウント名のバリデーション
-   */
-  bool nameValidator({@required String name}) {
-    return name.isEmpty ? true : false;
-  }
-
-  /*
-   * メールアドレスのバリデーション
-   */
-  bool emailValidator({@required String email}) {
-    if (email.isEmpty || !email.contains('@')) {
-      return true;
-    }
-    return false;
-  }
-
-  /*
-   * パスワードのバリデーション
-   */
-  bool passwordValidator({@required String password}) {
-    if (password.isEmpty || password.length < 6) {
-      return true;
-    }
-    return false;
   }
 }

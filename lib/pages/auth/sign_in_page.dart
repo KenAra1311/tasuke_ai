@@ -2,15 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:tasuke_ai/widgets/organisms/header.dart';
+import 'package:tasuke_ai/widgets/organisms/show_info.dart';
 
-import 'sign_up_page_view_model.dart';
+import 'sign_in_page_view_model.dart';
 
-class SignUpPage extends StatelessWidget {
+class SignInPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => SignUpPageModelView()),
+        ChangeNotifierProvider(create: (_) => SignInPageModelView()),
       ],
       child: Scaffold(
         appBar: Header(
@@ -27,7 +28,7 @@ class SignUpPage extends StatelessWidget {
 class _Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final _signUpPageModelView = Provider.of<SignUpPageModelView>(context);
+    final _signInPageModelView = Provider.of<SignInPageModelView>(context);
 
     return Container(
       margin: EdgeInsets.only(left: 20, right: 20),
@@ -37,33 +38,29 @@ class _Body extends StatelessWidget {
           Container(
             alignment: Alignment.topCenter,
             child: Text(
-              '登録するアカウント情報を入力してください',
+              '登録したアカウント情報を入力してください',
               style: TextStyle(
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
               ),
             ),
           ),
-          TextFormField(
-            controller: _signUpPageModelView.nameTextController,
-            decoration: InputDecoration(
-              labelText: 'アカウント名',
-              errorText: _signUpPageModelView.nameValidate ? 'アカウント名を入力してください' : null
-            ),
+          Container(
+            child: ShowInfo(info: _signInPageModelView.info),
           ),
           TextFormField(
-            controller: _signUpPageModelView.emailTextController,
+            controller: _signInPageModelView.emailTextController,
             decoration: InputDecoration(
               labelText: 'メールアドレス',
-              errorText: _signUpPageModelView.emailValidate ? 'メールアドレスを正しい形式で入力してください' : null
+              errorText: _signInPageModelView.emailValidate ? 'メールアドレスを正しい形式で入力してください' : null
             ),
             keyboardType: TextInputType.emailAddress,
           ),
           TextFormField(
-            controller: _signUpPageModelView.passwordTextController,
+            controller: _signInPageModelView.passwordTextController,
             decoration: InputDecoration(
               labelText: 'パスワード',
-              errorText: _signUpPageModelView.passwordValidate ? 'パスワードは6文字以上で入力してください' : null
+              errorText: _signInPageModelView.passwordValidate ? 'パスワードは6文字以上で入力してください' : null
             ),
             obscureText: true,
           ),
@@ -72,10 +69,10 @@ class _Body extends StatelessWidget {
             width: double.infinity,
             height: 40,
             child: RaisedButton(
-              onPressed: () => _signUpPageModelView.signUpUser(context: context),
+              onPressed: () => _signInPageModelView.signInUser(context: context),
               color: Colors.red,
               textColor: Colors.white,
-              child: Text('アカウントを登録する'),
+              child: Text('サインインする'),
             ),
           ),
         ],
