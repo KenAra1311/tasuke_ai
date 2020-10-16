@@ -60,6 +60,7 @@ class SignUpPageModelView extends ChangeNotifier {
     );
 
     if (info != '') {
+      _visible = false;
       notifyListeners();
     }
   }

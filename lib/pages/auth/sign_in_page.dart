@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:tasuke_ai/widgets/organisms/header.dart';
-import 'package:tasuke_ai/widgets/organisms/show_info.dart';
+import 'package:tasuke_ai/widgets/molecules/show_info.dart';
 
 import 'sign_in_page_view_model.dart';
 
