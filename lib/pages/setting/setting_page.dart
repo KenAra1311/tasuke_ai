@@ -1,23 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:tasuke_ai/pages/setting/setting_page_view_model.dart';
 import 'package:tasuke_ai/widgets/organisms/footer.dart';
 import 'package:tasuke_ai/widgets/organisms/header.dart';
 
-import 'home_page_view_model.dart';
-
-class HomePage extends StatelessWidget {
+class SettingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => HomePageModelView()),
+        ChangeNotifierProvider(create: (_) => SettingPageModelView()),
       ],
       child: Scaffold(
         appBar: Header(
-          title: 'ホーム',
+          title: '設定',
           backgroundColor: Color(0xfff44436),
           iconThemeColor: Color(0xffffffff),
-          isReturnButton: false,
         ),
         body: _Body(),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -36,6 +34,12 @@ class HomePage extends StatelessWidget {
 class _Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    final _homePageModelView = Provider.of<SettingPageModelView>(context);
+
+    return Container(
+      child: Center(
+        child: Text(_homePageModelView.getAuthenticatedUser().email),
+      ),
+    );
   }
 }
