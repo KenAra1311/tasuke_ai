@@ -18,13 +18,6 @@ class SettingPage extends StatelessWidget {
           iconThemeColor: Color(0xffffffff),
         ),
         body: _Body(),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        floatingActionButton: FloatingActionButton(
-          onPressed: () => null,
-          backgroundColor: Colors.redAccent,
-          elevation: 0.0,
-          child: Icon(Icons.add),
-        ),
         bottomNavigationBar: Footer(),
       ),
     );
