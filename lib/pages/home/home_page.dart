@@ -17,6 +17,7 @@ class HomePage extends StatelessWidget {
           backgroundColor: Color(0xfff44436),
           iconThemeColor: Color(0xffffffff),
           isReturnButton: false,
+          isPopupMenuButton: true,
         ),
         body: _Body(),
       ),
