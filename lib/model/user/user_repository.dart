@@ -1,7 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 
-import 'user.dart';
+import 'user.dart' as UserModel;
 
 abstract class UserRepository {
-  Future store({@required User user});
+  User getAuthenticatedUser();
+  Future store({@required UserModel.User user});
+  void signOutUser({@required BuildContext context});
 }

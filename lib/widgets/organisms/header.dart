@@ -5,14 +5,12 @@ class Header extends StatelessWidget with PreferredSizeWidget {
   final Color backgroundColor;
   final Color iconThemeColor;
   final bool isReturnButton;
-  final bool isPopupMenuButton;
 
   Header({
     @required this.title,
     @required this.backgroundColor,
     @required this.iconThemeColor,
     this.isReturnButton = true,
-    this.isPopupMenuButton = false,
   });
 
   @override
@@ -26,23 +24,6 @@ class Header extends StatelessWidget with PreferredSizeWidget {
       iconTheme: IconThemeData(color: iconThemeColor),
       elevation: 0.0,
       automaticallyImplyLeading: isReturnButton,
-      actions: <Widget>[
-        Visibility(
-          visible: isPopupMenuButton,
-          child: PopupMenuButton(
-            itemBuilder: (BuildContext context) {
-              return <PopupMenuEntry>[
-                PopupMenuItem(
-                  child: InkWell(
-                    onTap: () => null,
-                    child: Text('サインアウト'),
-                  ),
-                ),
-              ];
-            }
-          ),
-        ),
-      ],
     );
   }
 }

@@ -17,9 +17,16 @@ class HomePage extends StatelessWidget {
           backgroundColor: Color(0xfff44436),
           iconThemeColor: Color(0xffffffff),
           isReturnButton: false,
-          isPopupMenuButton: true,
         ),
         body: _Body(),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        floatingActionButton: FloatingActionButton(
+          onPressed: () => null,
+          backgroundColor: Colors.redAccent,
+          elevation: 0.0,
+          child: Icon(Icons.add),
+        ),
+        bottomNavigationBar: _BottomNavigationBar(),
       ),
     );
   }
@@ -33,6 +40,48 @@ class _Body extends StatelessWidget {
     return Container(
       child: Center(
         child: Text(_homePageModelView.getAuthenticatedUser().email),
+      ),
+    );
+  }
+}
+
+class _BottomNavigationBar extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // final _homePageModelView = Provider.of<HomePageModelView>(context);
+
+    return BottomAppBar(
+      color: Colors.redAccent,
+      elevation: 0.0,
+      notchMargin: 6.0,
+      shape: AutomaticNotchedShape(
+        RoundedRectangleBorder(),
+        StadiumBorder(
+          side: BorderSide(),
+        ),
+      ),
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 8.0),
+        child: Row(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            IconButton(
+              icon: Icon(
+                Icons.message_outlined,
+                color: Colors.white,
+              ),
+              onPressed: () => null,
+            ),
+            IconButton(
+              icon: Icon(
+                Icons.settings,
+                color: Colors.white,
+              ),
+              onPressed: () => null,
+            ),
+          ],
+        ),
       ),
     );
   }

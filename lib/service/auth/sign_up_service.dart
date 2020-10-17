@@ -8,6 +8,12 @@ import 'package:tasuke_ai/model/user/user.dart' as UserModel;
 import 'package:tasuke_ai/repositories/firebase/firebase_user_repository.dart';
 
 class SignUpService {
+  FirebaseUserRepository _firebaseUserRepository;
+
+  SignUpService() {
+    _firebaseUserRepository = FirebaseUserRepository();
+  }
+
   /*
    * サインアップを実行し、成功ならば画面遷移
    */
@@ -29,7 +35,7 @@ class SignUpService {
           password: password
         ).make();
 
-        FirebaseUserRepository().store(user: userModel)
+        _firebaseUserRepository.store(user: userModel)
           .then((_) => Navigator.of(context).pushReplacementNamed('/home'));
 
         return '';
