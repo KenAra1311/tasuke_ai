@@ -1,18 +1,17 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:tasuke_ai/service/setting/setting_service.dart';
+import 'package:tasuke_ai/service/auth/firebase_auth_service.dart';
 
 class SettingPageModelView extends ChangeNotifier {
-  SettingService _settingService;
+  FirebaseAuthService _firebaseAuthService;
 
   SettingPageModelView() {
-    _settingService = SettingService();
+    _firebaseAuthService = FirebaseAuthService();
   }
 
   /*
-   * 認証済みのユーザを取得する
+   * サインアウトを実行する
    */
-  User getAuthenticatedUser() {
-    return _settingService.getAuthenticatedUser();
+  void signOutUser({@required BuildContext context}) {
+    return _firebaseAuthService.signOutUser(context: context);
   }
 }
