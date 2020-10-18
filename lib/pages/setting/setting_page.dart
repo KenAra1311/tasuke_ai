@@ -25,12 +25,10 @@ class SettingPage extends StatelessWidget {
 class _Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final _settingPageModelView = Provider.of<SettingPageModelView>(context);
-
     return ListView(
       children: <Widget>[
         InkWell(
-          onTap: () => _settingPageModelView.signOutUser(context: context),
+          onTap: () => _showDialog(context: context),
           child: Container(
             decoration: BoxDecoration(
               border: Border(
@@ -48,6 +46,29 @@ class _Body extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+
+  Future _showDialog({@required BuildContext context}) async {
+    final _settingPageModelView = Provider.of<SettingPageModelView>(context, listen: false);
+
+    return await showDialog(
+      context: context,
+      builder: (BuildContext context) => AlertDialog(
+        title: Text('サインアウト'),
+        content: Text('サインアウトしますがよろしいでしょうか？'),
+        actions: <Widget>[
+          FlatButton(
+            child: Text('はい'),
+            onPressed: () => _settingPageModelView.signOutUser(context: context),
+          ),
+          FlatButton(
+            child: Text('いいえ'),
+            textColor: Colors.redAccent,
+            onPressed: () => Navigator.of(context).pop(),
+          ),
+        ],
+      ),
     );
   }
 }
