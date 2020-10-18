@@ -11,6 +11,7 @@ class SignUpPageModelView extends ChangeNotifier {
   bool _nameValidate;
   bool _emailValidate;
   bool _passwordValidate;
+  bool _visible;
   String _info;
 
   SignUpPageModelView() {
@@ -21,6 +22,7 @@ class SignUpPageModelView extends ChangeNotifier {
     _passwordTextController = TextEditingController();
     _nameValidate = false;
     _emailValidate = false;
+    _visible = false;
     _passwordValidate = false;
     _info = '';
   }
@@ -31,6 +33,7 @@ class SignUpPageModelView extends ChangeNotifier {
   bool get nameValidate => _nameValidate;
   bool get emailValidate => _emailValidate;
   bool get passwordValidate => _passwordValidate;
+  bool get visible => _visible;
   String get info => _info;
 
   /*
@@ -46,6 +49,9 @@ class SignUpPageModelView extends ChangeNotifier {
       return;
     }
 
+    _visible = true;
+    notifyListeners();
+
     _info = await _signUpService.signUpUser(
       name: nameTextController.text,
       email: emailTextController.text,
@@ -54,6 +60,7 @@ class SignUpPageModelView extends ChangeNotifier {
     );
 
     if (info != '') {
+      _visible = false;
       notifyListeners();
     }
   }

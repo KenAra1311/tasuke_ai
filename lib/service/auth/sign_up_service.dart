@@ -8,6 +8,12 @@ import 'package:tasuke_ai/model/user/user.dart' as UserModel;
 import 'package:tasuke_ai/repositories/firebase/firebase_user_repository.dart';
 
 class SignUpService {
+  FirebaseUserRepository _firebaseUserRepository;
+
+  SignUpService() {
+    _firebaseUserRepository = FirebaseUserRepository();
+  }
+
   /*
    * サインアップを実行し、成功ならば画面遷移
    */
@@ -29,14 +35,12 @@ class SignUpService {
           password: password
         ).make();
 
-        FirebaseUserRepository().store(user: userModel)
-          .then((value) => Navigator.of(context).pushReplacementNamed('/home'));
+        _firebaseUserRepository.store(user: userModel)
+          .then((_) => Navigator.of(context).pushReplacementNamed('/home'));
 
         return '';
       }
     } on FirebaseAuthException catch (e) {
-      print(e);
-
       switch (e.code) {
         case 'email-already-in-use':
           return '入力いただいたメールアドレスは、既に別のアカウントで使用されています';

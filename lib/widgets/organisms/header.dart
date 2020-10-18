@@ -4,11 +4,13 @@ class Header extends StatelessWidget with PreferredSizeWidget {
   final String title;
   final Color backgroundColor;
   final Color iconThemeColor;
+  final bool isReturnButton;
 
   Header({
     @required this.title,
     @required this.backgroundColor,
     @required this.iconThemeColor,
+    this.isReturnButton = true,
   });
 
   @override
@@ -21,6 +23,7 @@ class Header extends StatelessWidget with PreferredSizeWidget {
       backgroundColor: backgroundColor,
       iconTheme: IconThemeData(color: iconThemeColor),
       elevation: 0.0,
+      automaticallyImplyLeading: isReturnButton,
     );
   }
 }
