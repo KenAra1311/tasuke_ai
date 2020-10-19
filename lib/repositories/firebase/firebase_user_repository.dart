@@ -27,4 +27,14 @@ class FirebaseUserRepository implements UserRepository {
       .doc(user.uid.value.toString())
       .set(user.toMap());
   }
+
+  @override
+  Future update({
+    @required User user,
+    @required String uid
+  }) async {
+    await _query
+      .doc(uid)
+      .update(user.toMap());
+  }
 }

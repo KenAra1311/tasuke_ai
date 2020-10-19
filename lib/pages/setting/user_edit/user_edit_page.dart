@@ -45,22 +45,38 @@ class _Body extends StatelessWidget {
                 controller: _userEditPageModelView.nameTextController,
                 decoration: InputDecoration(
                   labelText: 'アカウント名',
-                  // errorText: _userEditPageModelView.nameValidate ? 'アカウント名を入力してください' : null
+                  errorText: _userEditPageModelView.nameValidate ? 'アカウント名を入力してください' : null
                 ),
+              ),
+              TextFormField(
+                controller: _userEditPageModelView.oldEmailTextController,
+                decoration: InputDecoration(
+                  labelText: '現在のメールアドレス',
+                  errorText: _userEditPageModelView.oldEmailValidate ? 'メールアドレスを正しい形式で入力してください' : null
+                ),
+                keyboardType: TextInputType.emailAddress,
+              ),
+              TextFormField(
+                controller: _userEditPageModelView.oldPasswordTextController,
+                decoration: InputDecoration(
+                  labelText: '現在のパスワード',
+                  errorText: _userEditPageModelView.oldPasswordValidate ? 'パスワードは6文字以上で入力してください' : null
+                ),
+                obscureText: true,
               ),
               TextFormField(
                 controller: _userEditPageModelView.emailTextController,
                 decoration: InputDecoration(
-                  labelText: 'メールアドレス',
-                  // errorText: _userEditPageModelView.emailValidate ? 'メールアドレスを正しい形式で入力してください' : null
+                  labelText: '新しいメールアドレス',
+                  errorText: _userEditPageModelView.emailValidate ? 'メールアドレスを正しい形式で入力してください' : null
                 ),
                 keyboardType: TextInputType.emailAddress,
               ),
               TextFormField(
                 controller: _userEditPageModelView.passwordTextController,
                 decoration: InputDecoration(
-                  labelText: 'パスワード',
-                  // errorText: _userEditPageModelView.passwordValidate ? 'パスワードは6文字以上で入力してください' : null
+                  labelText: '新しいパスワード',
+                  errorText: _userEditPageModelView.passwordValidate ? 'パスワードは6文字以上で入力してください' : null
                 ),
                 obscureText: true,
               ),
@@ -69,7 +85,7 @@ class _Body extends StatelessWidget {
                 width: double.infinity,
                 height: 40,
                 child: RaisedButton(
-                  // onPressed: () => _userEditPageModelView.updateUser(context: context),
+                  onPressed: () => _userEditPageModelView.updateUser(),
                   color: Colors.red,
                   textColor: Colors.white,
                   child: Text('変更を登録する'),

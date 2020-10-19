@@ -46,7 +46,7 @@ class SignUpService {
           return '入力いただいたメールアドレスは、既に別のアカウントで使用されています';
       }
 
-      return e.code.toString();
+      return e.toString();
     } catch (e) {
       return e.toString();
     }
