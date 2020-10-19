@@ -38,7 +38,7 @@ class _Body extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.all(20.0),
               child: Text(
-                'ユーザーを編集',
+                'アカウントを編集',
                 textAlign: TextAlign.center,
               ),
             ),

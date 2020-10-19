@@ -14,7 +14,7 @@ class UserEditPage extends StatelessWidget {
       ],
       child: Scaffold(
         appBar: Header(
-          title: 'ユーザー編集',
+          title: 'アカウント編集',
           backgroundColor: Color(0xfff44436),
           iconThemeColor: Color(0xffffffff),
         ),
@@ -72,7 +72,7 @@ class _Body extends StatelessWidget {
                   // onPressed: () => _userEditPageModelView.updateUser(context: context),
                   color: Colors.red,
                   textColor: Colors.white,
-                  child: Text('変更する'),
+                  child: Text('変更を登録する'),
                 ),
               ),
             ],
