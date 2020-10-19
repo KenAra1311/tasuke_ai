@@ -28,7 +28,24 @@ class _Body extends StatelessWidget {
     return ListView(
       children: <Widget>[
         InkWell(
-          onTap: () => _showDialog(context: context),
+          onTap: () => Navigator.of(context).pushNamed('/setting/user-edit'),
+          child: Container(
+            decoration: BoxDecoration(
+              border: Border(
+                bottom: BorderSide(color: Colors.black38),
+              ),
+            ),
+            child: Padding(
+              padding: EdgeInsets.all(20.0),
+              child: Text(
+                'アカウントを編集',
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ),
+        ),
+        InkWell(
+          onTap: () => _showDialog(context: context, itemName: 'サインアウト'),
           child: Container(
             decoration: BoxDecoration(
               border: Border(
@@ -49,14 +66,17 @@ class _Body extends StatelessWidget {
     );
   }
 
-  Future _showDialog({@required BuildContext context}) async {
+  Future _showDialog({
+    @required BuildContext context,
+    @required String itemName,
+  }) async {
     final _settingPageModelView = Provider.of<SettingPageModelView>(context, listen: false);
 
     return await showDialog(
       context: context,
       builder: (BuildContext context) => AlertDialog(
-        title: Text('サインアウト'),
-        content: Text('サインアウトしますがよろしいでしょうか？'),
+        title: Text(itemName),
+        content: Text('$itemNameしますがよろしいでしょうか？'),
         actions: <Widget>[
           FlatButton(
             child: Text('はい'),

@@ -11,9 +11,30 @@ class FirebaseUserRepository implements UserRepository {
   }
 
   @override
+  Future<Map<String, dynamic>> getSelf({@required String uid}) async {
+    Map<String, dynamic> _user;
+    await _query
+      .doc(uid)
+      .get()
+        .then((value) => _user = value.data());
+
+    return _user;
+  }
+
+  @override
   Future store({@required User user}) async {
     await _query
       .doc(user.uid.value.toString())
       .set(user.toMap());
+  }
+
+  @override
+  Future update({
+    @required User user,
+    @required String uid
+  }) async {
+    await _query
+      .doc(uid)
+      .update(user.toMap());
   }
 }

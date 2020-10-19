@@ -22,8 +22,8 @@ class SignUpPageModelView extends ChangeNotifier {
     _passwordTextController = TextEditingController();
     _nameValidate = false;
     _emailValidate = false;
-    _visible = false;
     _passwordValidate = false;
+    _visible = false;
     _info = '';
   }
 
