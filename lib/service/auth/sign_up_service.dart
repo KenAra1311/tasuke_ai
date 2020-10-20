@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:tasuke_ai/factory/user_factory.dart';
 import 'package:tasuke_ai/model/user/user.dart' as UserModel;
@@ -24,7 +23,6 @@ class SignUpService {
     @required BuildContext context
   }) async {
     try {
-      await Firebase.initializeApp();
       final User user = (await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password)).user;
 
       if (user != null) {
