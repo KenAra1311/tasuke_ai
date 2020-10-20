@@ -45,7 +45,10 @@ class _Body extends StatelessWidget {
           ),
         ),
         InkWell(
-          onTap: () => _showDialog(context: context, itemName: 'サインアウト'),
+          onTap: () => _showDialog(
+            context: context,
+            itemName: 'サインアウト',
+          ),
           child: Container(
             decoration: BoxDecoration(
               border: Border(
@@ -58,6 +61,25 @@ class _Body extends StatelessWidget {
                 'サインアウト',
                 textAlign: TextAlign.center,
                 style: TextStyle(color: Colors.red),
+              ),
+            ),
+          ),
+        ),
+        InkWell(
+          onTap: () => Navigator.of(context).pushNamed('/setting/user-delete'),
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.redAccent,
+              border: Border(
+                bottom: BorderSide(color: Colors.black38),
+              ),
+            ),
+            child: Padding(
+              padding: EdgeInsets.all(20.0),
+              child: Text(
+                'アカウントを削除',
+                textAlign: TextAlign.center,
+                style: TextStyle(color: Colors.white70),
               ),
             ),
           ),
@@ -80,7 +102,7 @@ class _Body extends StatelessWidget {
         actions: <Widget>[
           FlatButton(
             child: Text('はい'),
-            onPressed: () => _settingPageModelView.signOutUser(context: context),
+            onPressed: () => _settingPageModelView.executediscriminant(context: context, actionName: itemName),
           ),
           FlatButton(
             child: Text('いいえ'),

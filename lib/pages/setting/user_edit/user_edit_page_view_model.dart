@@ -47,10 +47,10 @@ class UserEditPageModelView extends ChangeNotifier {
   TextEditingController get emailTextController => _emailTextController;
   TextEditingController get passwordTextController => _passwordTextController;
   bool get nameValidate => _nameValidate;
-  bool get emailValidate => _emailValidate;
-  bool get passwordValidate => _passwordValidate;
   bool get oldEmailValidate => _oldEmailValidate;
   bool get oldPasswordValidate => _oldPasswordValidate;
+  bool get emailValidate => _emailValidate;
+  bool get passwordValidate => _passwordValidate;
   bool get visible => _visible;
   String get info => _info;
 

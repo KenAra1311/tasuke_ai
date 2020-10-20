@@ -9,6 +9,21 @@ class SettingPageModelView extends ChangeNotifier {
   }
 
   /*
+   * アクションに応じてメソッドを実行する
+   */
+  void executediscriminant({
+    @required BuildContext context,
+    @required String actionName,
+  }) {
+    switch (actionName) {
+      case 'サインアウト':
+        return signOutUser(context: context);
+    }
+
+    return;
+  }
+
+  /*
    * サインアウトを実行する
    */
   void signOutUser({@required BuildContext context}) {
