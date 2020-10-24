@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 class SignInService {
@@ -14,7 +13,6 @@ class SignInService {
     @required BuildContext context,
   }) async {
     try {
-      await Firebase.initializeApp();
       final user = (await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password)).user;
 
       if (user != null) {

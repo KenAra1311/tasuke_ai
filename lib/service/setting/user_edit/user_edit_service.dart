@@ -47,9 +47,9 @@ class UserEditService {
     } on FirebaseAuthException catch (e) {
       switch (e.code) {
         case 'requires-recent-login':
-          return 'アカウント情報を変更するために変更前のメールアドレスをご入力してください';
+          return 'アカウント情報を変更するために変更前のメールアドレスを入力してください';
         case 'user-mismatch':
-          return 'ご入力いただいた現在のメールアドレスがアカウントのメールアドレスと違うようです';
+          return '入力いただいた現在のメールアドレスがアカウントのメールアドレスと違うようです';
         case 'wrong-password':
           return '入力いただいたパスワードが違うようです';
       }

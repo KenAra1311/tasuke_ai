@@ -6,4 +6,5 @@ abstract class UserRepository {
   Future<Map<String, dynamic>> getSelf({@required String uid});
   Future store({@required User user});
   Future update({@required User user, @required String uid});
+  Future delete({@required String uid});
 }
