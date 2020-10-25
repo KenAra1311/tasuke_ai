@@ -22,7 +22,7 @@ class HomePage extends StatelessWidget {
         body: _Body(),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: FloatingActionButton(
-          onPressed: () => null,
+          onPressed: () => Navigator.of(context).pushNamed('/home/post-help'),
           backgroundColor: Colors.redAccent,
           elevation: 0.0,
           child: Icon(Icons.add),

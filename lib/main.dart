@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:tasuke_ai/pages/auth/sign_in_page.dart';
 import 'package:tasuke_ai/pages/auth/sign_up_page.dart';
 import 'package:tasuke_ai/pages/home/home_page.dart';
+import 'package:tasuke_ai/pages/home/post_help/post_help_page.dart';
 import 'package:tasuke_ai/pages/setting/setting_page.dart';
 import 'package:tasuke_ai/pages/setting/user_delete/user_delete_page.dart';
 import 'package:tasuke_ai/pages/setting/user_edit/user_edit_page.dart';
@@ -12,7 +13,7 @@ import 'package:tasuke_ai/pages/welcome/welcome_page.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  
+
   runApp(
     MaterialApp(
       initialRoute: '/',
@@ -22,6 +23,7 @@ Future<void> main() async {
         '/sign-up': (BuildContext context) => SignUpPage(),
         '/sign-in': (BuildContext context) => SignInPage(),
         '/home': (BuildContext context) => HomePage(),
+        '/home/post-help': (BuildContext context) => PostHelpPage(),
         '/setting': (BuildContext context) => SettingPage(),
         '/setting/user-edit': (BuildContext context) => UserEditPage(),
         '/setting/user-delete': (BuildContext context) => UserDeletePage(),
