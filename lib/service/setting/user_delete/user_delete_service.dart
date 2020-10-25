@@ -28,7 +28,7 @@ class UserDeleteService {
               // firebaseAuthのデータを削除
               _user.delete()
                 .then((_) {
-                  Navigator.of(context).pushReplacementNamed('/welcome');
+                  Navigator.of(context).pushNamedAndRemoveUntil('/welcome', ModalRoute.withName('/'));
                 });
             });
         });

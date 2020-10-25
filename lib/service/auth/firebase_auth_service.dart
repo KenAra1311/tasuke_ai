@@ -20,6 +20,6 @@ class FirebaseAuthService {
    */
   void signOutUser({@required BuildContext context}) {
     _auth.signOut()
-      .then((_) => Navigator.of(context).pushReplacementNamed('/welcome'));
+      .then((_) => Navigator.of(context).pushNamedAndRemoveUntil('/welcome', ModalRoute.withName('/')));
   }
 }
