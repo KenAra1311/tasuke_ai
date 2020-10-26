@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tasuke_ai/widgets/molecules/overlay_loading.dart';
+import 'package:tasuke_ai/widgets/molecules/show_info.dart';
 import 'package:tasuke_ai/widgets/organisms/header.dart';
 
 import 'post_help_page_view_model.dart';
@@ -43,6 +44,9 @@ class _Body extends StatelessWidget {
                   alignment: Alignment.topCenter,
                   child: Text('家事や力を貸してほしいことなどを発信しましょう！'),
                 ),
+                Container(
+                  child: ShowInfo(info: _postHelpPageModelView.info),
+                ),
                 TextFormField(
                   controller: _postHelpPageModelView.titleTextController,
                   decoration: InputDecoration(
@@ -61,7 +65,7 @@ class _Body extends StatelessWidget {
                   width: double.infinity,
                   height: 40,
                   child: RaisedButton(
-                    onPressed: () => null,
+                    onPressed: () => _postHelpPageModelView.postHelp(context: context),
                     color: Colors.red,
                     textColor: Colors.white,
                     child: Text('投稿する'),
