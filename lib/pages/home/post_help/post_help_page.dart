@@ -88,7 +88,7 @@ class _Body extends StatelessWidget {
                       width: 200,
                       height: 40,
                       child: RaisedButton(
-                        onPressed: () => null,
+                        onPressed: () => _postHelpPageModelView.selectTime(context: context),
                         color: Colors.white.withOpacity(0.7),
                         textColor: Colors.redAccent,
                         child: Text(_postHelpPageModelView.time),

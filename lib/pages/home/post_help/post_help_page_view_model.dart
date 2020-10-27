@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:tasuke_ai/service/home/post_help/post_help_service.dart';
 import 'package:tasuke_ai/service/validator/post_validator.dart';
 import 'package:tasuke_ai/widgets/atoms/show_date_picker.dart';
+import 'package:tasuke_ai/widgets/atoms/show_time_picker.dart';
 
 class PostHelpPageModelView extends ChangeNotifier {
   PostHelpService _postHelpService;
@@ -46,6 +47,18 @@ class PostHelpPageModelView extends ChangeNotifier {
       context: context,
       date: date,
     ).selectDate();
+
+    notifyListeners();
+  }
+
+  /*
+   * 時間の選択操作を実行させる
+   */
+  Future<void> selectTime({@required BuildContext context}) async {
+    _time = await ShowTimePicker(
+      context: context,
+      time: time,
+    ).selectTime();
 
     notifyListeners();
   }
