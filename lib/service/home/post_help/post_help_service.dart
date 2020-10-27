@@ -21,12 +21,17 @@ class PostHelpService {
     @required BuildContext context,
     @required String title,
     String description,
+    @required String date,
+    @required String time,
+    @required String duration,
   }) async {
     try {
       final PostHelp _postHelp = PostHelpFactory(
         uid: _user.uid,
         title: title,
         description: description,
+        dateTime: date + time,
+        duration: duration,
       ).make();
 
       await _firebasePostHelpRepository.store(postHelp: _postHelp)

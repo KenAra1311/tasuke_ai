@@ -96,11 +96,11 @@ class _Body extends StatelessWidget {
                   ],
                 ),
                 TextFormField(
-                  controller: _postHelpPageModelView.titleTextController,
+                  controller: _postHelpPageModelView.durationTextController,
                   decoration: InputDecoration(
-                    labelText: 'おおよそかかる時間',
+                    labelText: '所要時間',
                     hintText: 'およそ１時間程度',
-                    errorText: _postHelpPageModelView.titleValidate ? 'タイトルは必ず入力してください' : null
+                    errorText: _postHelpPageModelView.durationValidate ? '所要時間は必ず入力してください' : null
                   ),
                 ),
                 Container(

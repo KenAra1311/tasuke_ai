@@ -20,7 +20,7 @@ class ShowDatePicker {
     );
 
     if (_selectedDate != null) {
-      return DateFormat.yMMMd('ja').format(_selectedDate);
+      return DateFormat.yMMMEd('ja').format(_selectedDate);
     } else {
       return _date;
     }

@@ -11,9 +11,11 @@ class PostHelpPageModelView extends ChangeNotifier {
   PostValidator _postValidator;
   TextEditingController _titleTextController;
   TextEditingController _descriptionTextController;
+  TextEditingController _durationTextController;
   String _date;
   String _time;
   bool _titleValidate;
+  bool _durationValidate;
   bool _visible;
   String _info;
 
@@ -24,18 +26,24 @@ class PostHelpPageModelView extends ChangeNotifier {
     _postValidator = PostValidator();
     _titleTextController = TextEditingController();
     _descriptionTextController = TextEditingController();
-    _date = DateFormat.yMMMd('ja').format(DateTime.now());
+    _durationTextController = TextEditingController();
+    _date = DateFormat.yMMMEd('ja').format(DateTime.now());
     _time = DateFormat.Hm('ja').format(DateTime.now());
     _titleValidate = false;
+    _durationValidate = false;
     _visible = false;
     _info = '';
+
+    print(DateFormat.yMMMEd('ja').format(DateTime.now()));
   }
 
   TextEditingController get titleTextController => _titleTextController;
   TextEditingController get descriptionTextController => _descriptionTextController;
+  TextEditingController get durationTextController => _durationTextController;
   String get date => _date;
   String get time => _time;
   bool get titleValidate => _titleValidate;
+  bool get durationValidate => _durationValidate;
   bool get visible => _visible;
   String get info => _info;
 
@@ -69,7 +77,8 @@ class PostHelpPageModelView extends ChangeNotifier {
   Future postHelp({@required BuildContext context}) async {
     // 入力レベルのバリデーションチェック
     _titleValidate = _postValidator.titleValidator(title: titleTextController.text);
-    if (titleValidate) {
+    _durationValidate = _postValidator.durationValidator(duration: durationTextController.text);
+    if (titleValidate  || durationValidate) {
       notifyListeners();
       return;
     }
@@ -81,6 +90,9 @@ class PostHelpPageModelView extends ChangeNotifier {
       context: context,
       title: titleTextController.text,
       description: descriptionTextController.text,
+      date: date,
+      time: time,
+      duration: durationTextController.text
     );
 
     _visible = false;
