@@ -32,7 +32,6 @@ class _Body extends StatelessWidget {
 
     return Stack(
       fit: StackFit.expand,
-      overflow: Overflow.clip,
       children: <Widget>[
         Container(
           margin: EdgeInsets.only(left: 20, right: 20),
