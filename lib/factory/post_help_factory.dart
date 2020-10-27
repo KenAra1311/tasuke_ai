@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tasuke_ai/model/post_help/post_help.dart';
+import 'package:tasuke_ai/model/post_help/valueobject/created_at.dart';
 import 'package:tasuke_ai/model/post_help/valueobject/date_time.dart';
 import 'package:tasuke_ai/model/post_help/valueobject/description.dart';
 import 'package:tasuke_ai/model/post_help/valueobject/duration.dart';
@@ -12,6 +13,7 @@ class PostHelpFactory {
   final String _description;
   final String _dateTime;
   final String _duration;
+  final String _createdAt;
 
   PostHelpFactory({
     @required String uid,
@@ -19,11 +21,13 @@ class PostHelpFactory {
     @required String description,
     @required String dateTime,
     @required String duration,
+    @required String createdAt,
   })  : _uid = uid,
         _title = title,
         _description = description,
         _dateTime = dateTime,
-        _duration = duration;
+        _duration = duration,
+        _createdAt = createdAt;
 
   PostHelp make() {
     return PostHelp(
@@ -32,6 +36,7 @@ class PostHelpFactory {
       description: Description(description: _description),
       dateTime: DateTime(dateTime: _dateTime),
       duration: Duration(duration: _duration),
+      createdAt: CreatedAt(createdAt: _createdAt),
     );
   }
 }

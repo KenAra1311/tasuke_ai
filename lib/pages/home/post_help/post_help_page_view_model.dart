@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
@@ -14,6 +15,7 @@ class PostHelpPageModelView extends ChangeNotifier {
   TextEditingController _durationTextController;
   String _date;
   String _time;
+  String _createdAt;
   bool _titleValidate;
   bool _durationValidate;
   bool _visible;
@@ -29,12 +31,11 @@ class PostHelpPageModelView extends ChangeNotifier {
     _durationTextController = TextEditingController();
     _date = DateFormat.yMMMEd('ja').format(DateTime.now());
     _time = DateFormat.Hm('ja').format(DateTime.now());
+    _createdAt = Timestamp.now().toDate().toString();
     _titleValidate = false;
     _durationValidate = false;
     _visible = false;
     _info = '';
-
-    print(DateFormat.yMMMEd('ja').format(DateTime.now()));
   }
 
   TextEditingController get titleTextController => _titleTextController;
@@ -42,6 +43,7 @@ class PostHelpPageModelView extends ChangeNotifier {
   TextEditingController get durationTextController => _durationTextController;
   String get date => _date;
   String get time => _time;
+  String get createdAt => _createdAt;
   bool get titleValidate => _titleValidate;
   bool get durationValidate => _durationValidate;
   bool get visible => _visible;
@@ -92,7 +94,8 @@ class PostHelpPageModelView extends ChangeNotifier {
       description: descriptionTextController.text,
       date: date,
       time: time,
-      duration: durationTextController.text
+      duration: durationTextController.text,
+      createdAt: createdAt,
     );
 
     _visible = false;

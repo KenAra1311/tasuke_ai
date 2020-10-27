@@ -35,8 +35,6 @@ class UserDeleteService {
 
       return '';
     } on FirebaseAuthException catch (e) {
-      print(e);
-
       switch (e.code) {
         case 'wrong-password':
           return '入力いただいたパスワードが違うようです';
