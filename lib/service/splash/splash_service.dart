@@ -19,9 +19,9 @@ class SplashService {
   void setTimer({@required BuildContext context}) {
     Timer(const Duration(seconds: 1), () {
       if (user == null) {
-        Navigator.of(context).pushNamedAndRemoveUntil('/welcome', ModalRoute.withName('/welcome'));
+        Navigator.of(context).pushNamedAndRemoveUntil('/welcome', ModalRoute.withName(''));
       } else {
-        Navigator.of(context).pushNamedAndRemoveUntil('/home', ModalRoute.withName('/home'));
+        Navigator.of(context).pushNamedAndRemoveUntil('/home', ModalRoute.withName(''));
       }
     });
   }

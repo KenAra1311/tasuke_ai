@@ -16,7 +16,7 @@ class SignInService {
       final user = (await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password)).user;
 
       if (user != null) {
-        Navigator.of(context).pushNamedAndRemoveUntil('/home', ModalRoute.withName('/'));
+        Navigator.of(context).pushNamedAndRemoveUntil('/home', ModalRoute.withName(''));
       }
 
       return '';

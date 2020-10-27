@@ -34,7 +34,7 @@ class SignUpService {
         ).make();
 
         _firebaseUserRepository.store(user: userModel)
-          .then((_) => Navigator.of(context).pushNamedAndRemoveUntil('/home', ModalRoute.withName('/')));
+          .then((_) => Navigator.of(context).pushNamedAndRemoveUntil('/home', ModalRoute.withName('')));
 
         return '';
       }
