@@ -28,15 +28,13 @@ class UserDeleteService {
               // firebaseAuthのデータを削除
               _user.delete()
                 .then((_) {
-                  Navigator.of(context).pushReplacementNamed('/welcome');
+                  Navigator.of(context).pushNamedAndRemoveUntil('/welcome', ModalRoute.withName(''));
                 });
             });
         });
 
       return '';
     } on FirebaseAuthException catch (e) {
-      print(e);
-
       switch (e.code) {
         case 'wrong-password':
           return '入力いただいたパスワードが違うようです';
