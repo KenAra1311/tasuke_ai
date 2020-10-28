@@ -32,7 +32,7 @@ class PostHelp {
   Uid get uid => _uid;
   TitleModel.Title get title => _title;
   Description get description => _description;
-  DateTime get date => _dateTime;
+  DateTime get dateTime => _dateTime;
   Duration get duration => _duration;
   CreatedAt get createdAt => _createdAt;
 

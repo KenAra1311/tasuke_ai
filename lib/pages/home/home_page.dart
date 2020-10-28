@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:tasuke_ai/model/post_help/post_help.dart';
+import 'package:tasuke_ai/widgets/molecules/overlay_loading.dart';
 import 'package:tasuke_ai/widgets/organisms/footer.dart';
 import 'package:tasuke_ai/widgets/organisms/header.dart';
 
@@ -36,6 +38,43 @@ class HomePage extends StatelessWidget {
 class _Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    final _homePageModelView = Provider.of<HomePageModelView>(context);
+
+    return FutureBuilder(
+      future: _homePageModelView.getPostHelps(),
+      builder: (BuildContext context, AsyncSnapshot<List<PostHelp>> snapshot) {
+        if (snapshot.hasError) {
+          return Text(snapshot.error.toString());
+        }
+
+        if (!snapshot.hasData) {
+          return Stack(
+            fit: StackFit.expand,
+            children: <Widget>[
+              OverlayLoading(visible: true),
+            ],
+          );
+        }
+
+        return Container(
+          child: GridView(
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+            children: snapshot.data.map((postHelp) => _showPostHelp(postHelp: postHelp)).toList(),
+          ),
+        );
+      }
+    );
+  }
+
+  Widget _showPostHelp({@required PostHelp postHelp}) {
+    return Column(
+      children: <Widget>[
+        Text(postHelp.title.value),
+        Text(postHelp.description.value),
+        Text(postHelp.dateTime.value),
+        Text(postHelp.duration.value),
+        Text(postHelp.createdAt.value),
+      ],
+    );
   }
 }
